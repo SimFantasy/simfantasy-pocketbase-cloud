@@ -1,6 +1,6 @@
 import React from 'react'
 import { Author, Titlebar, PostList, PortfolioList, SnippetList, SiteList } from '@/components'
-import { useFeatureQuery } from '@/hooks'
+import { useFeatureQuery, useTitle } from '@/hooks'
 import {
   featurePostsLimit,
   featurePortfoliosLimit,
@@ -9,6 +9,7 @@ import {
 } from '@/constants/settings'
 
 const Home = () => {
+  useTitle('Home')
   const { data: featurePostsData, isLoading: featurePostsIsLoading } = useFeatureQuery(
     'posts',
     featurePostsLimit

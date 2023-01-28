@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useCategoriesQuery, useListQuery } from '@/hooks'
+import { useCategoriesQuery, useListQuery, useTitle } from '@/hooks'
 import { ListTitlebar, PortfolioList, Pagination } from '@/components'
 import { listPortfoliosLimit } from '@/constants/settings'
 import { PortfoliosWrap } from './style'
 
 const Portfolios = () => {
+  useTitle('Portfolios')
   const [page, setPage] = useState(1)
   const [categort, setCategory] = useState('')
   useEffect(() => {

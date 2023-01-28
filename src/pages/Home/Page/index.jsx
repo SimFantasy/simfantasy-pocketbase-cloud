@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDetailQuery, useAuth, useDeleteMutation, useTitle } from '@/hooks'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri'
-import { useDetailQuery, useAuth, useDeleteMutation } from '@/hooks'
 import { Spin, MarkdownContent, ListTitlebar, Maybe } from '@/components'
 import { serializationString } from '@/utils'
 import { PageWrap } from './style'
@@ -10,8 +10,9 @@ const Page = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const { isAuth } = useAuth()
-  const { data, isLoading } = useDetailQuery('pages')
+  const { data, isLoading, isSuccess } = useDetailQuery('pages')
   const { mutate } = useDeleteMutation('pages')
+
   if (isLoading)
     return (
       <PageWrap>

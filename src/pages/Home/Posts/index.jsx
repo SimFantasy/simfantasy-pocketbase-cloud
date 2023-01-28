@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useCategoriesQuery, useListQuery } from '@/hooks'
+import { useCategoriesQuery, useListQuery, useTitle } from '@/hooks'
 import { ListTitlebar, PostList, Pagination } from '@/components'
 import { listPostsLimit } from '@/constants/settings'
 import { PostsWrap } from './style'
 
 const Posts = () => {
+  useTitle('Posts')
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState('')
 

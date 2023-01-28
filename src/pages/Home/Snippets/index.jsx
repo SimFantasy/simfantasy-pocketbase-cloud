@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useListQuery, useCategoriesQuery } from '@/hooks'
+import { useListQuery, useCategoriesQuery, useTitle } from '@/hooks'
 import { SnippetList, ListTitlebar, Pagination } from '@/components'
 import { listSnippetsLimit } from '@/constants/settings'
 import { SnippetsWrap } from './style'
 
 const Snipptes = () => {
+  useTitle('Snippets')
   const [page, setPage] = useState(1)
   const [category, setCategory] = useState('')
 
