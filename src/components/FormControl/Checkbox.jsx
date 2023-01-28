@@ -7,7 +7,11 @@ import { FormControlWrap, ErrorText } from './style'
 const Checkbox = ({ label, name, options, ...rest }) => {
   return (
     <FormControlWrap className='form-control'>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label htmlFor={name} className='form-label'>
+          {label}
+        </label>
+      )}
       <Field id={name} name={name} {...rest}>
         {({ field }) => {
           return (

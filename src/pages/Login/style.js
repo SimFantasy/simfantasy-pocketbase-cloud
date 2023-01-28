@@ -37,3 +37,34 @@ export const LoginWrap = styled.section`
     }
   }
 `
+export const LoginErrorMessage = styled.div`
+  ${s.flex('space-between', 'center')};
+  width: auto;
+  height: 40px;
+  border-radius: var(--sim-radius-sm);
+  background-color: var(--sim-red-2);
+
+  .error-content {
+    box-sizing: border-box;
+    flex: 1;
+    ${s.flex('flex-start', 'center')};
+    padding: 0 48px 0 var(--sim-space-sm);
+    height: 100%;
+    font-size: var(--sim-text-sm);
+    color: var(--sim-red);
+  }
+
+  .close-btn {
+    flex: 0 0 auto;
+    ${s.flex('center', 'center')};
+    width: 32px;
+    height: 100%;
+    font-size: var(--sim-text-md);
+    color: var(--sim-gray);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--sim-gray-7);
+    }
+  }
+`

@@ -480,6 +480,10 @@ const RootStyles = () => {
             background-color: var(--sim-bg);
           }
         }
+
+        .pointer {
+          cursor: pointer;
+        }
       `}
     />
   )

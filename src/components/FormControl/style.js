@@ -97,6 +97,12 @@ export const FormControlWrap = styled.div`
           border-color: var(--sim-divider);
           color: var(--sim-text-disabled);
           cursor: default;
+
+          &:hover {
+            border-color: var(--sim-divider);
+            color: var(--sim-text-disabled);
+            cursor: default;
+          }
         }
       }
 

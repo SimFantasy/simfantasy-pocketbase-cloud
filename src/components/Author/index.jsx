@@ -1,12 +1,15 @@
 import React, { memo } from 'react'
-import { useAuthorQuery } from '@/hooks'
-import { Skeleton, Box } from '@/components'
+import { Link } from 'react-router-dom'
+import { RiPencilLine, RiLogoutBoxRLine } from 'react-icons/ri'
+import { useAuthorQuery, useAuth } from '@/hooks'
+import { Skeleton, Box, Maybe } from '@/components'
+import { createNavs } from '@/constants/navs'
 import { avatarImage } from '@/utils'
 import { AuthorWrap } from './style'
 
 const Author = () => {
   const { data, isLoading } = useAuthorQuery()
-
+  const { isAuth, logout } = useAuth()
   if (isLoading) {
     return (
       <AuthorWrap>
@@ -35,6 +38,20 @@ const Author = () => {
           <div className='author-username'>{data?.name}</div>
           <div className='author-bio'>{data?.bio}</div>
         </div>
+        <Maybe state={isAuth}>
+          <div className='create-btns'>
+            {createNavs?.map(nav => (
+              <Link to={nav.route} className='create-btn' key={nav.route}>
+                <RiPencilLine />
+                {nav.name}
+              </Link>
+            ))}
+            <div className='create-btn' onClick={logout}>
+              <RiLogoutBoxRLine />
+              Logout
+            </div>
+          </div>
+        </Maybe>
       </div>
     </AuthorWrap>
   )

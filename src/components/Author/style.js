@@ -59,5 +59,37 @@ export const AuthorWrap = styled.section`
         color: var(--sim-text-secondary);
       }
     }
+
+    .create-btns {
+      flex: 0 0 auto;
+      ${s.flex('flex-end', 'flex-start')};
+      flex-wrap: wrap;
+      gap: var(--sim-space-xs);
+      max-width: 270px;
+
+      .create-btn {
+        ${s.flex('center', 'center')};
+        gap: var(--sim-space-xs);
+        padding: 4px 8px;
+        border-radius: var(--sim-radius-xs);
+        background-color: var(--sim-gray-2);
+        font-size: var(--sim-text-sm);
+        color: var(--sim-title);
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--sim-gray-4);
+          color: var(--sim-light);
+        }
+      }
+    }
+  }
+
+  @media (max-width: ${s['mobile-width']}) {
+    .author-container {
+      .create-btns {
+        display: none;
+      }
+    }
   }
 `

@@ -20,6 +20,26 @@ export const PageWrap = styled.section`
         border-radius: var(--sim-radius-sm);
       }
     }
+
+    .post-info {
+      margin-bottom: var(--sim-space-lg);
+      ${s.flex('flex-start', 'center')};
+      gap: var(--sim-space-md);
+      height: 40px;
+
+      .info-item {
+        ${s.flex('flex-start', 'center')};
+        gap: var(--sim-space-xs);
+        height: 40px;
+        font-size: var(--sim-text-sm);
+        color: var(--sim-text-secondary);
+
+        svg {
+          font-size: var(--sim-text-md);
+        }
+      }
+    }
+
     .page-content {
       margin-bottom: var(--sim-space-lg);
       line-height: 1.8;

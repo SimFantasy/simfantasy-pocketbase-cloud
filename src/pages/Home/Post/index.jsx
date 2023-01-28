@@ -1,12 +1,17 @@
 import React from 'react'
-import { RiCalendar2Line, RiFolder2Line } from 'react-icons/ri'
-import { useDetailQuery } from '@/hooks'
-import { MarkdownContent, Spin } from '@/components'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import { RiCalendar2Line, RiFolder2Line, RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri'
+import { useDetailQuery, useAuth, useDeleteMutation } from '@/hooks'
+import { MarkdownContent, Spin, Maybe } from '@/components'
 import { fullDateFormat, serializationString } from '@/utils'
 import { PostWrap } from './style'
 
 const Post = () => {
+  const { isAuth } = useAuth()
+  const navigate = useNavigate()
+  const { id } = useParams()
   const { data, isLoading } = useDetailQuery('posts')
+  const { mutate } = useDeleteMutation('posts')
   if (isLoading)
     return (
       <PostWrap>
@@ -16,6 +21,14 @@ const Post = () => {
       </PostWrap>
     )
   const { content, coverImage, title, tags, created, expand } = data
+
+  const handleDelete = () => {
+    mutate(id, {
+      onSuccess: () => {
+        navigate('/posts')
+      }
+    })
+  }
 
   return (
     <PostWrap>
@@ -35,6 +48,16 @@ const Post = () => {
             <RiFolder2Line />
             {expand?.category?.name}
           </div>
+          <Maybe state={isAuth}>
+            <div className='info-item pointer' onClick={handleDelete}>
+              <RiDeleteBinLine />
+              Delete
+            </div>
+            <Link to={`/manage/post/${id}`} className='info-item'>
+              <RiEdit2Line />
+              Edit
+            </Link>
+          </Maybe>
         </div>
         <div className='post-content'>
           <MarkdownContent source={content} />

@@ -46,17 +46,19 @@ export const SiteItemWrap = styled.section`
 
     .site-item-description {
       ${s.ellipsis(2)};
-      font-size: var(--sim-text-sm);
+      font-size: var(--sim-text-xs);
       color: var(--sim-text-secondary);
     }
 
     .site-item-btns {
       ${s.flex('flex-end', 'center')};
+      gap: var(--sim-space-sm);
       height: 32px;
 
       .site-item-link {
         box-sizing: border-box;
         ${s.flex('center', 'center')};
+        gap: var(--sim-space-xs);
         padding: 4px 16px;
         border: 1px solid var(--sim-divider);
         border-radius: var(--sim-radius-xs);

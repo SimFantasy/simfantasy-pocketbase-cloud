@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { RiTyphoonFill } from 'react-icons/ri'
+import { RiTyphoonFill, RiCloseLine } from 'react-icons/ri'
 import { useAuth, useLoginMutation } from '@/hooks'
 import { FormControl } from '@/components'
 import { siteName } from '@/constants/settings'
-import { LoginWrap } from './style'
-
-import { pb } from '@/constants/config'
+import { LoginWrap, LoginErrorMessage } from './style'
 
 const Login = () => {
   const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState('')
+  const [showError, setShowError] = useState(false)
   const { login } = useAuth()
   const { mutate, isLoading } = useLoginMutation({
     onSuccess: data => {
       login(data)
       navigate('/home')
+    },
+    onError: data => {
+      setErrorMessage(data.message)
+      setShowError(true)
     }
   })
+
+  const handleHideError = () => {
+    setErrorMessage('')
+    setShowError(false)
+  }
 
   const initialVales = {
     identity: '',
@@ -39,6 +48,16 @@ const Login = () => {
         <div className='login-titlebar'>
           <RiTyphoonFill />
           <div className='logo-text'>{siteName}</div>
+        </div>
+        <div className='login-messages'>
+          {showError && (
+            <LoginErrorMessage>
+              <div className='error-content'>{errorMessage}</div>
+              <div className='close-btn' onClick={handleHideError}>
+                <RiCloseLine />
+              </div>
+            </LoginErrorMessage>
+          )}
         </div>
         <Formik
           initialValues={initialVales}

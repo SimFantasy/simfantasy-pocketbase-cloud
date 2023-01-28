@@ -4,6 +4,7 @@ import { BoxWrap } from './style'
 const Box = ({
   children,
   props,
+  box,
   display,
   justify,
   gap,
@@ -31,6 +32,7 @@ const Box = ({
 }) => {
   return (
     <BoxWrap
+      box={box}
       display={display}
       justify={justify}
       align={align}

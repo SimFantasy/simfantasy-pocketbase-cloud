@@ -39,6 +39,23 @@ export const SnippetItemWrap = styled.section`
       font-size: var(--sim-text-sm);
       color: var(--sim-text-secondary);
     }
+
+    .snippet-btn {
+      flex: 0 0 auto;
+      ${s.flex('center', 'center')};
+      gap: var(--sim-space-xs);
+      padding: 4px 8px;
+      border-radius: var(--sim-radius-xs);
+      border: 1px solid var(--sim-divider);
+      font-size: var(--sim-text-xs);
+      color: var(--sim-text);
+      transition: 0.3s ease;
+
+      &:hover {
+        border-color: var(--sim-border);
+        color: var(--sim-title);
+      }
+    }
   }
 
   .snippet-item-title {

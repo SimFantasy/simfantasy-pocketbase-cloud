@@ -71,6 +71,7 @@ export const HeaderWrap = styled.header`
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 10000;
     background-color: var(--sim-bg-secondary);
 
     .header-container {
@@ -117,7 +118,7 @@ export const HeaderWrap = styled.header`
           .m-navs {
             display: flex;
             flex-direction: column;
-            gap: var(--sim-space-lg);
+            gap: var(--sim-space-sm);
 
             .m-nav-item {
               ${s.flex('center', 'center')};

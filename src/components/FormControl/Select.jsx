@@ -5,7 +5,11 @@ import { FormControlWrap, ErrorText } from './style'
 const Select = ({ label, name, options, ...rest }) => {
   return (
     <FormControlWrap className='form-control'>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label htmlFor={name} className='form-label'>
+          {label}
+        </label>
+      )}
       <Field as='select' id={name} name={name} {...rest} className='form-select'>
         <option value=''>Option</option>
         {options?.map(option => (

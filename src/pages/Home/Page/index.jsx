@@ -1,11 +1,17 @@
 import React from 'react'
-import { useDetailQuery } from '@/hooks'
-import { Spin, MarkdownContent, ListTitlebar } from '@/components'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri'
+import { useDetailQuery, useAuth, useDeleteMutation } from '@/hooks'
+import { Spin, MarkdownContent, ListTitlebar, Maybe } from '@/components'
 import { serializationString } from '@/utils'
 import { PageWrap } from './style'
 
 const Page = () => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { isAuth } = useAuth()
   const { data, isLoading } = useDetailQuery('pages')
+  const { mutate } = useDeleteMutation('pages')
   if (isLoading)
     return (
       <PageWrap>
@@ -15,9 +21,15 @@ const Page = () => {
       </PageWrap>
     )
 
-  console.log('data', data)
-
   const { title, coverImage, content, tags } = data
+
+  const handleDelete = () => {
+    mutate(id, {
+      onSuccess: () => {
+        navigate('/home')
+      }
+    })
+  }
 
   return (
     <PageWrap>
@@ -28,6 +40,18 @@ const Page = () => {
           </div>
         )}
         <ListTitlebar title={title} />
+        <Maybe state={isAuth}>
+          <div className='post-info'>
+            <div className='info-item pointer' onClick={handleDelete}>
+              <RiDeleteBinLine />
+              Delete
+            </div>
+            <Link to={`/manage/page/${id}`} className='info-item'>
+              <RiEdit2Line />
+              Edit
+            </Link>
+          </div>
+        </Maybe>
         <div className='page-content'>
           <MarkdownContent source={content} />
         </div>

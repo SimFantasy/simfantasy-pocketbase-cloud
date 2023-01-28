@@ -40,6 +40,9 @@ export const dateNowFormat = date => dayjs(date).locale('zh-cn').fromNow()
 //序列化Skeleton
 export const limitMap = limit => Array(limit).fill(0)
 
+// 格式化slug
+export const slugFormat = slug => slug.toLowerCase().trim().replace(/\s+/g, '-')
+
 // Snippet 中 category.slug 匹配 图标
 export const snippetIcon = type => {
   switch (type) {

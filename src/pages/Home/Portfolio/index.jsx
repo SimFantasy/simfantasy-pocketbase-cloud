@@ -1,12 +1,23 @@
 import React from 'react'
-import { RiCalendar2Line, RiFolder2Line, RiLinkM } from 'react-icons/ri'
-import { useDetailQuery } from '@/hooks'
-import { Spin, MarkdownContent } from '@/components'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import {
+  RiCalendar2Line,
+  RiFolder2Line,
+  RiLinkM,
+  RiEdit2Line,
+  RiDeleteBinLine
+} from 'react-icons/ri'
+import { useDetailQuery, useAuth, useDeleteMutation } from '@/hooks'
+import { Spin, MarkdownContent, Maybe } from '@/components'
 import { fullDateFormat, serializationString } from '@/utils'
 import { PortfolioWrap } from './style'
 
 const Portfolio = () => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const { isAuth } = useAuth()
   const { data, isLoading } = useDetailQuery('portfolios')
+  const { mutate } = useDeleteMutation('portfolios')
   if (isLoading)
     return (
       <PortfolioWrap>
@@ -17,6 +28,14 @@ const Portfolio = () => {
     )
 
   const { coverImage, title, created, expand, content, tags, gallery, link } = data
+
+  const handleDelete = () => {
+    mutate(id, {
+      onSuccess: () => {
+        navigate('/portfolios')
+      }
+    })
+  }
 
   return (
     <PortfolioWrap>
@@ -34,6 +53,16 @@ const Portfolio = () => {
             <RiFolder2Line />
             {expand?.category?.name}
           </div>
+          <Maybe state={isAuth}>
+            <div className='info-item pointer' onClick={handleDelete}>
+              <RiDeleteBinLine />
+              Delete
+            </div>
+            <Link to={`/manage/portfolio/${id}`} className='info-item'>
+              <RiEdit2Line />
+              Edit
+            </Link>
+          </Maybe>
         </div>
         <div className='portfolio-introduction'>
           <MarkdownContent source={content} />

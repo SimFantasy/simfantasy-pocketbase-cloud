@@ -45,4 +45,23 @@ export const ListTitlebarWrap = styled.section`
       }
     }
   }
+
+  @media (max-width: ${s['mobile-width']}) {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--sim-space-xl);
+    height: auto;
+
+    .title {
+      justify-content: flex-start;
+      width: 100%;
+      height: 40px;
+    }
+
+    .title-navs {
+      justify-content: flex-start;
+      width: 100%;
+      height: 40px;
+    }
+  }
 `
