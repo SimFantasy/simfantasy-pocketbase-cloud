@@ -34,6 +34,7 @@ export const HeaderWrap = styled.header`
       height: 100%;
 
       .nav-item {
+        ${s.flex('center', 'center')};
         font-size: var(--sim-text-md);
         color: var(--sim-text-secondary);
 
@@ -122,6 +123,7 @@ export const HeaderWrap = styled.header`
 
             .m-nav-item {
               ${s.flex('center', 'center')};
+              gap: var(--sim-space-xs);
               font-size: var(--sim-text-xl);
               color: var(--sim-text-secondary);
 

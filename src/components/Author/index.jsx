@@ -46,10 +46,6 @@ const Author = () => {
                 {nav.name}
               </Link>
             ))}
-            <div className='create-btn' onClick={logout}>
-              <RiLogoutBoxRLine />
-              Logout
-            </div>
           </div>
         </Maybe>
       </div>

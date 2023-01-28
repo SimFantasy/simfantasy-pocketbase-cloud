@@ -6,7 +6,8 @@ import {
   RiMenuLine,
   RiCloseLine,
   RiLogoutBoxRLine,
-  RiPencilLine
+  RiPencilLine,
+  RiBearSmileLine
 } from 'react-icons/ri'
 import { useScrollLock, useTheme, useAuth } from '@/hooks'
 import { Maybe } from '@/components'
@@ -51,6 +52,16 @@ const Header = () => {
               {nav.name}
             </NavLink>
           ))}
+          <Maybe state={!isAuth}>
+            <Link to='/login' className='nav-item'>
+              <RiBearSmileLine />
+            </Link>
+          </Maybe>
+          <Maybe state={isAuth}>
+            <div className='nav-item pointer' onClick={handleLogout}>
+              <RiLogoutBoxRLine />
+            </div>
+          </Maybe>
         </nav>
 
         <div className={cx('theme-btn', { dark: theme === 'dark' })} onClick={toggleTheme}></div>
