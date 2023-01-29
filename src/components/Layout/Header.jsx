@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react'
+import React, { useState, memo, useCallback } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import cx from 'clsx'
 import {
@@ -22,22 +22,22 @@ const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(false)
   const { isAuth, logout } = useAuth()
 
-  const handleToggleNav = () => {
+  const handleToggleNav = useCallback(() => {
     setIsNavVisible(!isNavVisible)
     toggleLock()
-  }
+  })
 
-  const handleClickNavLink = () => {
+  const handleClickNavLink = useCallback(() => {
     setIsNavVisible(false)
     toggleLock()
-  }
+  })
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     logout()
     setIsNavVisible(false)
     toggleLock()
     navigate('/home')
-  }
+  })
 
   return (
     <HeaderWrap>

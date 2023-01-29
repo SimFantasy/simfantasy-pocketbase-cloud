@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
-import MarkdownPreview from '@uiw/react-markdown-preview'
+import MDEditor from '@uiw/react-md-editor'
 
 const MarkdownContent = ({ source, config }) => {
-  return <MarkdownPreview source={source} {...config} />
+  return <MDEditor.Markdown source={source} {...config} />
 }
 
 export default memo(MarkdownContent)

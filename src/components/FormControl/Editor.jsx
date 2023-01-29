@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { Field, ErrorMessage } from 'formik'
-import MarkdownEditor from '@uiw/react-markdown-editor'
+import MDEditor from '@uiw/react-md-editor'
 import { FormControlWrap, ErrorText } from './style'
 
 const Editor = ({ label, name, ...rest }) => {
@@ -13,13 +13,16 @@ const Editor = ({ label, name, ...rest }) => {
       )}
       <Field id={name} name={name} {...rest}>
         {({ field, form }) => (
-          <MarkdownEditor
+          <MDEditor
             className='form-editor'
+            {...rest}
             {...field}
             name={name}
             id={name}
+            value={field.value}
             onChange={value => form.setFieldValue(name, value)}
             onBlur={event => form.setFieldTouched(name, true)}
+            preview='edit'
           />
         )}
       </Field>

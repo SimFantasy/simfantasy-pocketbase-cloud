@@ -90,7 +90,7 @@ export const FormControlWrap = styled.div`
         color: var(--sim-title);
 
         &:hover {
-          border-color: var(--sim-gray-5);
+          border-color: var(--sim-title);
         }
 
         &:disabled {
