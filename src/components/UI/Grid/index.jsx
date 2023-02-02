@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { GridWrap } from './style'
 
 const Grid = ({
@@ -42,4 +42,4 @@ const Grid = ({
   )
 }
 
-export default Grid
+export default memo(Grid)

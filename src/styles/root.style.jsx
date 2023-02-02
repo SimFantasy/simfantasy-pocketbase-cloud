@@ -434,10 +434,6 @@ const RootStyles = () => {
           outline: 0;
         }
 
-        ul {
-          list-style-type: none;
-        }
-
         img {
           max-width: 100%;
         }
