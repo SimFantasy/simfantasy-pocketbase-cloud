@@ -10,12 +10,11 @@ export const SnippetItemWrap = styled.section`
   width: 100%;
   height: 100%;
   border-radius: var(--sim-radius-sm);
-  border: 1px solid transparent;
   background-color: var(--sim-bg-tertiary);
   transition: 0.3s ease;
 
   &:hover {
-    border-color: var(--sim-divider);
+    box-shadow: var(--sim-shadow);
   }
 
   .snippet-item-category {

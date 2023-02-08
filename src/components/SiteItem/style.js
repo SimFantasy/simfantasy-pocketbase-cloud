@@ -6,12 +6,11 @@ export const SiteItemWrap = styled.section`
   padding: var(--sim-space-sm);
   width: 100%;
   border-radius: var(--sim-radius-sm);
-  border: 1px solid transparent;
   background-color: var(--sim-bg-tertiary);
   transition: 0.3s ease;
 
   &:hover {
-    border-color: var(--sim-divider);
+    box-shadow: var(--sim-shadow);
   }
 
   .site-item-container {

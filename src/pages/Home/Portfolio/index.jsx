@@ -67,12 +67,15 @@ const Portfolio = () => {
         <div className='portfolio-introduction'>
           <MarkdownContent source={content} />
         </div>
-        <div className='portfolio-links'>
-          <a href={link} target='_blank' rel='noopener noreferrer' className='portfolio-link-btn'>
-            <RiLinkM />
-            Portfolio Link
-          </a>
-        </div>
+        {link && (
+          <div className='portfolio-links'>
+            <a href={link} target='_blank' rel='noopener noreferrer' className='portfolio-link-btn'>
+              <RiLinkM />
+              Portfolio Link
+            </a>
+          </div>
+        )}
+
         <div className='portfolio-tags'>
           {serializationString(tags)?.map((tag, index) => (
             <div className='tag-item' key={index}>
@@ -81,16 +84,19 @@ const Portfolio = () => {
           ))}
         </div>
         <div className='divider'></div>
-        <div className='portfolio-gallery'>
-          {gallery?.images?.map((item, index) => (
-            <div className='gallery-item' key={index}>
-              <div className='gallery-item-image'>
-                <img src={item.image} />
+        {gallery?.images && (
+          <div className='portfolio-gallery'>
+            {gallery?.images?.map((item, index) => (
+              <div className='gallery-item' key={index}>
+                <div className='gallery-item-image'>
+                  <img src={item.image} />
+                </div>
+                {item.title && <div className='gallery-item-title'>{item.title}</div>}
               </div>
-              {item.title && <div className='gallery-item-title'>{item.title}</div>}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
         <div className='divider'></div>
       </div>
     </PortfolioWrap>
